@@ -15,10 +15,13 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
     
     private var locationManager:CLLocationManager?
-    private let distanceSpan:Double = 800
+    private let distanceSpan:Double = 2000
+    private var barArray = [MKMapItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         // Do any additional setup after loading the view.
     }
@@ -60,6 +63,24 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         if let mapView = self.mapView {
             let region = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, distanceSpan, distanceSpan)
             mapView.setRegion(region, animated: true)
+            
+            let request = MKLocalSearchRequest()
+            request.naturalLanguageQuery = "Bar"
+            request.region = region
+            
+            let search = MKLocalSearch(request: request)
+            
+            search.startWithCompletionHandler {
+                (response, error) -> Void in
+                
+                for item:MKMapItem in (response?.mapItems)! {
+                    print(item.name)
+                    self.barArray.append(item)
+                    print(self.barArray.count)
+                    
+                }
+                
+            }
         }
     }
 
