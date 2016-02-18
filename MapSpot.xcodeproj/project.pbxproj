@@ -16,6 +16,7 @@
 		C08141321C753BC700842AAF /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08141311C753BC700842AAF /* MapVC.swift */; };
 		C08141341C7622A200842AAF /* SpotListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08141331C7622A200842AAF /* SpotListVC.swift */; };
 		C08141361C7622B900842AAF /* SpotDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08141351C7622B900842AAF /* SpotDetailVC.swift */; };
+		C08141381C762A0A00842AAF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C08141371C762A0A00842AAF /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		C08141311C753BC700842AAF /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		C08141331C7622A200842AAF /* SpotListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotListVC.swift; sourceTree = "<group>"; };
 		C08141351C7622B900842AAF /* SpotDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotDetailVC.swift; sourceTree = "<group>"; };
+		C08141371C762A0A00842AAF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C08141381C762A0A00842AAF /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +84,7 @@
 		C08140F71C753BA600842AAF = {
 			isa = PBXGroup;
 			children = (
+				C08141371C762A0A00842AAF /* MapKit.framework */,
 				C08141021C753BA600842AAF /* MapSpot */,
 				C08141171C753BA600842AAF /* MapSpotTests */,
 				C08141221C753BA600842AAF /* MapSpotUITests */,
