@@ -14,6 +14,8 @@
 		C08141191C753BA600842AAF /* MapSpotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08141181C753BA600842AAF /* MapSpotTests.swift */; };
 		C08141241C753BA600842AAF /* MapSpotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08141231C753BA600842AAF /* MapSpotUITests.swift */; };
 		C08141321C753BC700842AAF /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08141311C753BC700842AAF /* MapVC.swift */; };
+		C08141341C7622A200842AAF /* SpotListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08141331C7622A200842AAF /* SpotListVC.swift */; };
+		C08141361C7622B900842AAF /* SpotDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08141351C7622B900842AAF /* SpotDetailVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		C08141231C753BA600842AAF /* MapSpotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSpotUITests.swift; sourceTree = "<group>"; };
 		C08141251C753BA600842AAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C08141311C753BC700842AAF /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
+		C08141331C7622A200842AAF /* SpotListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotListVC.swift; sourceTree = "<group>"; };
+		C08141351C7622B900842AAF /* SpotDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotDetailVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,8 @@
 			children = (
 				C08141031C753BA600842AAF /* AppDelegate.swift */,
 				C08141311C753BC700842AAF /* MapVC.swift */,
+				C08141351C7622B900842AAF /* SpotDetailVC.swift */,
+				C08141331C7622A200842AAF /* SpotListVC.swift */,
 				C08141071C753BA600842AAF /* Main.storyboard */,
 				C081410A1C753BA600842AAF /* Assets.xcassets */,
 				C081410C1C753BA600842AAF /* LaunchScreen.storyboard */,
@@ -256,8 +262,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C08141341C7622A200842AAF /* SpotListVC.swift in Sources */,
 				C08141041C753BA600842AAF /* AppDelegate.swift in Sources */,
 				C08141321C753BC700842AAF /* MapVC.swift in Sources */,
+				C08141361C7622B900842AAF /* SpotDetailVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

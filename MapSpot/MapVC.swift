@@ -17,6 +17,8 @@ class MapVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mapView.showsPointsOfInterest = false
+        
         // Do any additional setup after loading the view.
     }
 
