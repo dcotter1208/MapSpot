@@ -35,24 +35,65 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oc7-0D-wOJ">
-                                <rect key="frame" x="524" y="43" width="56" height="52"/>
+                                <rect key="frame" x="525" y="28" width="55" height="55"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="56" id="iEE-1l-P6E"/>
-                                    <constraint firstAttribute="height" constant="52" id="vWJ-Vh-syJ"/>
+                                    <constraint firstAttribute="height" constant="55" id="VKp-Th-NZn"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Bars"/>
                                 <connections>
                                     <action selector="findBars:" destination="BYZ-38-t0r" eventType="touchUpInside" id="npY-Ze-WiD"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5uP-9D-6ih">
-                                <rect key="frame" x="524" y="118" width="56" height="52"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6YC-Bt-lzR">
+                                <rect key="frame" x="532" y="100" width="40" height="40"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="52" id="aw1-43-DWb"/>
+                                    <constraint firstAttribute="height" constant="40" id="76S-B2-aYf"/>
+                                    <constraint firstAttribute="width" constant="40" id="BJi-B3-jrt"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="9"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Clubs"/>
+                                <connections>
+                                    <action selector="findClubs:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tEM-yZ-fAy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5qg-fu-MSL">
+                                <rect key="frame" x="532" y="157" width="40" height="40"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="iwX-Dv-3fj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="9"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Dive"/>
+                                <connections>
+                                    <action selector="findDiveBars:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PKw-I5-40v"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAt-PX-jQ1">
+                                <rect key="frame" x="532" y="211" width="40" height="40"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="8Pa-bG-8Dw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="9"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Sports"/>
+                                <connections>
+                                    <action selector="findSportsBars:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a7o-XW-VnE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5uP-9D-6ih">
+                                <rect key="frame" x="525" y="267" width="55" height="55"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="Gor-CC-3HT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Casinos"/>
                                 <connections>
@@ -64,22 +105,36 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="VD9-v9-Ag6" secondAttribute="trailing" id="4Fk-dT-kzC"/>
                             <constraint firstItem="CUV-Qw-aPv" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="51t-AJ-msv"/>
-                            <constraint firstItem="oc7-0D-wOJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="23" id="DpN-9U-wNN"/>
-                            <constraint firstItem="5uP-9D-6ih" firstAttribute="top" secondItem="oc7-0D-wOJ" secondAttribute="bottom" constant="23" id="ITN-Ps-phF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6YC-Bt-lzR" secondAttribute="trailing" constant="8" id="8zJ-iX-D1R"/>
+                            <constraint firstItem="5uP-9D-6ih" firstAttribute="leading" secondItem="oc7-0D-wOJ" secondAttribute="leading" id="HKd-f7-FZR"/>
+                            <constraint firstItem="wAt-PX-jQ1" firstAttribute="trailing" secondItem="5qg-fu-MSL" secondAttribute="trailing" id="JTF-cY-WfO"/>
+                            <constraint firstItem="6YC-Bt-lzR" firstAttribute="leading" secondItem="5qg-fu-MSL" secondAttribute="leading" id="M2E-Tk-VxR"/>
+                            <constraint firstItem="6YC-Bt-lzR" firstAttribute="top" secondItem="oc7-0D-wOJ" secondAttribute="bottom" constant="17" id="N9Y-M8-Pz3"/>
+                            <constraint firstItem="5qg-fu-MSL" firstAttribute="top" secondItem="6YC-Bt-lzR" secondAttribute="bottom" constant="17" id="NSj-Sg-idD"/>
                             <constraint firstItem="VD9-v9-Ag6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="UZ3-YN-OeX"/>
-                            <constraint firstItem="5uP-9D-6ih" firstAttribute="trailing" secondItem="CUV-Qw-aPv" secondAttribute="trailing" id="ang-if-IJO"/>
+                            <constraint firstItem="5uP-9D-6ih" firstAttribute="top" secondItem="wAt-PX-jQ1" secondAttribute="bottom" constant="16" id="UeC-5x-2Bu"/>
+                            <constraint firstItem="5uP-9D-6ih" firstAttribute="trailing" secondItem="CUV-Qw-aPv" secondAttribute="trailing" id="Wff-BM-ffo"/>
+                            <constraint firstItem="oc7-0D-wOJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="XS9-q9-7Vj"/>
+                            <constraint firstItem="6YC-Bt-lzR" firstAttribute="trailing" secondItem="5qg-fu-MSL" secondAttribute="trailing" id="ZBB-ak-vov"/>
+                            <constraint firstItem="wAt-PX-jQ1" firstAttribute="top" secondItem="5qg-fu-MSL" secondAttribute="bottom" constant="14" id="atb-gR-CT7"/>
+                            <constraint firstItem="5uP-9D-6ih" firstAttribute="centerX" secondItem="wAt-PX-jQ1" secondAttribute="centerX" id="fSt-mI-pg5"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="CUV-Qw-aPv" secondAttribute="bottom" constant="8" symbolic="YES" id="hod-gl-chZ"/>
-                            <constraint firstItem="5uP-9D-6ih" firstAttribute="trailing" secondItem="oc7-0D-wOJ" secondAttribute="trailing" id="pkg-Zf-klu"/>
                             <constraint firstItem="VD9-v9-Ag6" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="rpA-be-kJP"/>
+                            <constraint firstItem="oc7-0D-wOJ" firstAttribute="trailing" secondItem="5uP-9D-6ih" secondAttribute="trailing" id="sYy-2g-8pU"/>
+                            <constraint firstItem="wAt-PX-jQ1" firstAttribute="leading" secondItem="5qg-fu-MSL" secondAttribute="leading" id="ufT-BW-RKA"/>
                             <constraint firstItem="VD9-v9-Ag6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="wug-A2-Mrq"/>
-                            <constraint firstItem="oc7-0D-wOJ" firstAttribute="leading" secondItem="5uP-9D-6ih" secondAttribute="leading" id="x0M-jZ-qqo"/>
                             <constraint firstItem="CUV-Qw-aPv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="472" id="xLP-yG-iZj"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" id="Otl-2n-Sr0"/>
                     <toolbarItems/>
                     <connections>
+                        <outlet property="allBarsButton" destination="oc7-0D-wOJ" id="be3-au-M7Q"/>
+                        <outlet property="casinosButton" destination="5uP-9D-6ih" id="BlA-4Q-jxM"/>
+                        <outlet property="clubsButton" destination="6YC-Bt-lzR" id="ikV-Uv-sbc"/>
+                        <outlet property="diveBarButton" destination="5qg-fu-MSL" id="T0r-Rc-hAE"/>
                         <outlet property="mapView" destination="VD9-v9-Ag6" id="HmO-UR-JCv"/>
+                        <outlet property="sportsBarButton" destination="wAt-PX-jQ1" id="vCa-xL-7tI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
