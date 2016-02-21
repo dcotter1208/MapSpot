@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C0266D371C775EC10028D4E7 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0266D361C775EC10028D4E7 /* Venue.swift */; };
+		C036E0E31C79468F00BC37F4 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C036E0E21C79468F00BC37F4 /* Annotation.swift */; };
+		C036E0E51C79622F00BC37F4 /* LocalSearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C036E0E41C79622F00BC37F4 /* LocalSearchAPI.swift */; };
 		C08141041C753BA600842AAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08141031C753BA600842AAF /* AppDelegate.swift */; };
 		C08141091C753BA600842AAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C08141071C753BA600842AAF /* Main.storyboard */; };
 		C081410B1C753BA600842AAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C081410A1C753BA600842AAF /* Assets.xcassets */; };
@@ -37,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C0266D361C775EC10028D4E7 /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
+		C036E0E21C79468F00BC37F4 /* Annotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
+		C036E0E41C79622F00BC37F4 /* LocalSearchAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalSearchAPI.swift; sourceTree = "<group>"; };
 		C08141001C753BA600842AAF /* MapSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C08141031C753BA600842AAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C08141081C753BA600842AAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -81,6 +87,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C0266D381C775ECF0028D4E7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C0266D361C775EC10028D4E7 /* Venue.swift */,
+				C036E0E21C79468F00BC37F4 /* Annotation.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		C08140F71C753BA600842AAF = {
 			isa = PBXGroup;
 			children = (
@@ -109,10 +124,12 @@
 				C08141311C753BC700842AAF /* MapVC.swift */,
 				C08141351C7622B900842AAF /* SpotDetailVC.swift */,
 				C08141331C7622A200842AAF /* SpotListVC.swift */,
+				C036E0E41C79622F00BC37F4 /* LocalSearchAPI.swift */,
 				C08141071C753BA600842AAF /* Main.storyboard */,
 				C081410A1C753BA600842AAF /* Assets.xcassets */,
 				C081410C1C753BA600842AAF /* LaunchScreen.storyboard */,
 				C081410F1C753BA600842AAF /* Info.plist */,
+				C0266D381C775ECF0028D4E7 /* Model */,
 			);
 			path = MapSpot;
 			sourceTree = "<group>";
@@ -267,9 +284,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C08141341C7622A200842AAF /* SpotListVC.swift in Sources */,
+				C0266D371C775EC10028D4E7 /* Venue.swift in Sources */,
 				C08141041C753BA600842AAF /* AppDelegate.swift in Sources */,
 				C08141321C753BC700842AAF /* MapVC.swift in Sources */,
+				C036E0E31C79468F00BC37F4 /* Annotation.swift in Sources */,
 				C08141361C7622B900842AAF /* SpotDetailVC.swift in Sources */,
+				C036E0E51C79622F00BC37F4 /* LocalSearchAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +516,7 @@
 				C081412A1C753BA600842AAF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C081412B1C753BA600842AAF /* Build configuration list for PBXNativeTarget "MapSpotTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +525,7 @@
 				C081412D1C753BA600842AAF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C081412E1C753BA600842AAF /* Build configuration list for PBXNativeTarget "MapSpotUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +534,7 @@
 				C08141301C753BA600842AAF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
