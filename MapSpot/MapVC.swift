@@ -69,28 +69,12 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
         if let mapView = self.mapView {
             region = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, distanceSpan, distanceSpan)
+
             mapView.setRegion(region, animated: true)
             
-            let barSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-            barSearch.localSearch(region, queryTerm: "Bar")
+
             
-            let danceClubSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-            danceClubSearch.localSearch(region, queryTerm: "Dance Clubs")
-            
-            let diveBarSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-            diveBarSearch.localSearch(region, queryTerm: "Dive Bar")
-            
-            let drinksSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-            drinksSearch.localSearch(region, queryTerm: "Drinks")
-            
-            let sportsBarSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-            sportsBarSearch.localSearch(region, queryTerm: "Sports Bar")
-            
-            let casinoSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-            casinoSearch.localSearch(region, queryTerm: "Casinos")
-            let MGMSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-            MGMSearch.localSearch(region, queryTerm: "MGM Grand Detroit")
-            
+
             }
         }
     
@@ -115,8 +99,46 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     @IBAction func switchToSatelliteView(sender: AnyObject) {
         mapView.mapType = .Hybrid
+        mapView.pitchEnabled = true
+        mapView.camera.pitch = 40
+
         
     }
+    @IBAction func findBars(sender: AnyObject) {
+        
+        venueArray.removeAll()
+        mapView.removeAnnotations(mapView.annotations)
+
+        let barSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
+        barSearch.localSearch(region, queryTerm: "Bar")
+        
+        let danceClubSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
+        danceClubSearch.localSearch(region, queryTerm: "Dance Clubs")
+        
+        let diveBarSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
+        diveBarSearch.localSearch(region, queryTerm: "Dive Bar")
+        
+        let drinksSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
+        drinksSearch.localSearch(region, queryTerm: "Drinks")
+        
+        let sportsBarSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
+        sportsBarSearch.localSearch(region, queryTerm: "Sports Bar")
+        
+    }
+    
+    @IBAction func findCasinos(sender: AnyObject) {
+        venueArray.removeAll()
+        mapView.removeAnnotations(mapView.annotations)
+
+        let casinoSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
+        casinoSearch.localSearch(region, queryTerm: "Casinos")
+        let MGMSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
+        MGMSearch.localSearch(region, queryTerm: "MGM Grand Detroit")
+        
+        
+    }
+    
+    
     
 }
 

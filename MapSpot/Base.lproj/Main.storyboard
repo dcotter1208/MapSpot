@@ -34,15 +34,45 @@
                                     <action selector="switchToSatelliteView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tnL-u2-QM8"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oc7-0D-wOJ">
+                                <rect key="frame" x="524" y="43" width="56" height="52"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="56" id="iEE-1l-P6E"/>
+                                    <constraint firstAttribute="height" constant="52" id="vWJ-Vh-syJ"/>
+                                </constraints>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Bars"/>
+                                <connections>
+                                    <action selector="findBars:" destination="BYZ-38-t0r" eventType="touchUpInside" id="npY-Ze-WiD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5uP-9D-6ih">
+                                <rect key="frame" x="524" y="118" width="56" height="52"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="aw1-43-DWb"/>
+                                </constraints>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Casinos"/>
+                                <connections>
+                                    <action selector="findCasinos:" destination="BYZ-38-t0r" eventType="touchUpInside" id="89x-rr-lQn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="VD9-v9-Ag6" secondAttribute="trailing" id="4Fk-dT-kzC"/>
                             <constraint firstItem="CUV-Qw-aPv" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="51t-AJ-msv"/>
+                            <constraint firstItem="oc7-0D-wOJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="23" id="DpN-9U-wNN"/>
+                            <constraint firstItem="5uP-9D-6ih" firstAttribute="top" secondItem="oc7-0D-wOJ" secondAttribute="bottom" constant="23" id="ITN-Ps-phF"/>
                             <constraint firstItem="VD9-v9-Ag6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="UZ3-YN-OeX"/>
+                            <constraint firstItem="5uP-9D-6ih" firstAttribute="trailing" secondItem="CUV-Qw-aPv" secondAttribute="trailing" id="ang-if-IJO"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="CUV-Qw-aPv" secondAttribute="bottom" constant="8" symbolic="YES" id="hod-gl-chZ"/>
+                            <constraint firstItem="5uP-9D-6ih" firstAttribute="trailing" secondItem="oc7-0D-wOJ" secondAttribute="trailing" id="pkg-Zf-klu"/>
                             <constraint firstItem="VD9-v9-Ag6" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="rpA-be-kJP"/>
                             <constraint firstItem="VD9-v9-Ag6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="wug-A2-Mrq"/>
+                            <constraint firstItem="oc7-0D-wOJ" firstAttribute="leading" secondItem="5uP-9D-6ih" secondAttribute="leading" id="x0M-jZ-qqo"/>
                             <constraint firstItem="CUV-Qw-aPv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="472" id="xLP-yG-iZj"/>
                         </constraints>
                     </view>
@@ -50,7 +80,6 @@
                     <toolbarItems/>
                     <connections>
                         <outlet property="mapView" destination="VD9-v9-Ag6" id="HmO-UR-JCv"/>
-                        <segue destination="zds-JU-k95" kind="presentation" id="Z6k-rh-Out"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -132,7 +161,4 @@
             <point key="canvasLocation" x="1027" y="725"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="Z6k-rh-Out"/>
-    </inferredMetricsTieBreakers>
 </document>
