@@ -10,36 +10,43 @@ import UIKit
 import MapKit
 
 
+/*
+
+Foursquare multiple category search:
+
+/v2/venues/search?categoryId=4bf58dd8d48988d121941735,4bf58dd8d48988d11f941735,4bf58dd8d48988d1d8941735,4bf58dd8d48988d1e9931735,4bf58dd8d48988d1e7931735&ll=47.6097,-122.3331&radius=10000&intent=browse&v=20120801
+
+    to increase limit:
+
+    &limit=50
+
+*/
+
 
 class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
     
     private var locationManager:CLLocationManager?
-    private let distanceSpan:Double = 2000
-    private var barArray = [MKMapItem]()
+    private let distanceSpan:Double = 500
+    private var region = MKCoordinateRegion()
+    private var venueArray = [Venue]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
-        // Do any additional setup after loading the view.
+
     }
     
-    override func viewWillAppear(animated: Bool)
-    {
+    override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let mapView = self.mapView
-        {
+        if let mapView = self.mapView {
             mapView.delegate = self
             mapView.showsPointsOfInterest = false
-
         }
     }
     
-    override func viewDidAppear(animated: Bool)
-    {
+    override func viewDidAppear(animated: Bool) {
         if locationManager == nil {
             locationManager = CLLocationManager()
             
@@ -52,7 +59,6 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         }
     }
     
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -61,28 +67,51 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
         if let mapView = self.mapView {
-            let region = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, distanceSpan, distanceSpan)
+            region = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, distanceSpan, distanceSpan)
             mapView.setRegion(region, animated: true)
             
-            let request = MKLocalSearchRequest()
-            request.naturalLanguageQuery = "Bar"
-            request.region = region
+//            let barSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
+//            barSearch.localSearch(region, queryTerm: "Bar")
+//            
+//            let danceClubSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
+//            danceClubSearch.localSearch(region, queryTerm: "Dance Clubs")
+//            
+//            let diveBarSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
+//            diveBarSearch.localSearch(region, queryTerm: "Dive Bar")
+//            
+//            let drinksSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
+//            drinksSearch.localSearch(region, queryTerm: "Drinks")
+//            
+//            let sportsBarSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
+//            sportsBarSearch.localSearch(region, queryTerm: "Sports Bar")
+//            
+            let casinoSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
+            casinoSearch.localSearch(region, queryTerm: "Casinos")
             
-            let search = MKLocalSearch(request: request)
-            
-            search.startWithCompletionHandler {
-                (response, error) -> Void in
-                
-                for item:MKMapItem in (response?.mapItems)! {
-                    print(item.name)
-                    self.barArray.append(item)
-                    print(self.barArray.count)
-                    
-                }
-                
             }
-        }
+        
     }
+    
 
-
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        //First, check if the annotation isn’t accidentally the user blip.
+        if annotation.isKindOfClass(MKUserLocation) {
+            return nil
+        }
+        
+        var pin = mapView.dequeueReusableAnnotationViewWithIdentifier("annotationIdentifier")
+        
+        if pin == nil {
+            pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "annotationIdentifier")
+        }
+        
+        pin?.canShowCallout = true
+        
+        return pin
+    }
+    
+    
 }
+
+
