@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dd0-zX-4Nh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="L2i-0K-BP8">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Map-->
@@ -20,41 +21,41 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="VD9-v9-Ag6">
                                 <rect key="frame" x="0.0" y="20" width="600" height="531"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CUV-Qw-aPv">
+                                <rect key="frame" x="498" y="492" width="82" height="51"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="82" id="8Od-Z4-v7E"/>
+                                </constraints>
+                                <state key="normal" title="Satellite">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="switchToSatelliteView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tnL-u2-QM8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="VD9-v9-Ag6" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="4KE-sV-c5P"/>
-                            <constraint firstItem="VD9-v9-Ag6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="6VC-GC-i2x"/>
-                            <constraint firstAttribute="trailing" secondItem="VD9-v9-Ag6" secondAttribute="trailing" id="CLA-rY-Ulj"/>
-                            <constraint firstItem="VD9-v9-Ag6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Eyd-Yp-VrF"/>
+                            <constraint firstAttribute="trailing" secondItem="VD9-v9-Ag6" secondAttribute="trailing" id="4Fk-dT-kzC"/>
+                            <constraint firstItem="CUV-Qw-aPv" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="51t-AJ-msv"/>
+                            <constraint firstItem="VD9-v9-Ag6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="UZ3-YN-OeX"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="CUV-Qw-aPv" secondAttribute="bottom" constant="8" symbolic="YES" id="hod-gl-chZ"/>
+                            <constraint firstItem="VD9-v9-Ag6" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="rpA-be-kJP"/>
+                            <constraint firstItem="VD9-v9-Ag6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="wug-A2-Mrq"/>
+                            <constraint firstItem="CUV-Qw-aPv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="472" id="xLP-yG-iZj"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" id="Otl-2n-Sr0"/>
+                    <toolbarItems/>
                     <connections>
                         <outlet property="mapView" destination="VD9-v9-Ag6" id="HmO-UR-JCv"/>
+                        <segue destination="zds-JU-k95" kind="presentation" id="Z6k-rh-Out"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1013" y="299"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="yEe-cL-3ho">
-            <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="dd0-zX-4Nh" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="R4V-2Q-Jwa">
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="HOi-GC-pLp"/>
-                        <segue destination="aCE-PY-fwl" kind="relationship" relationship="viewControllers" id="dky-Co-Igr"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3gB-ub-ukS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="319" y="299"/>
+            <point key="canvasLocation" x="1825" y="299"/>
         </scene>
         <!--List-->
         <scene sceneID="THt-do-rW7">
@@ -92,7 +93,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rFn-ZJ-VoY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="319" y="1010"/>
+            <point key="canvasLocation" x="1825" y="1095"/>
         </scene>
         <!--Spot DetailVC-->
         <scene sceneID="Jsv-wP-Lg0">
@@ -110,7 +111,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O2l-aH-Kec" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1011" y="1010"/>
+            <point key="canvasLocation" x="2581" y="616"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="k2z-if-gBu">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="L2i-0K-BP8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="aZD-pT-vMc">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="am9-tt-JaB"/>
+                        <segue destination="aCE-PY-fwl" kind="relationship" relationship="viewControllers" id="0yM-XM-rz2"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xz8-nW-aF5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1027" y="725"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Z6k-rh-Out"/>
+    </inferredMetricsTieBreakers>
 </document>
