@@ -32,6 +32,8 @@ class LocalSearchAPI {
             if let mapItems = response?.mapItems {
                 for item:MKMapItem in mapItems {
                     
+                    print(item)
+                    
                     let venue = Venue()
                     
                     if let venueName = item.name {
@@ -54,6 +56,7 @@ class LocalSearchAPI {
                     if let venueWebsite = item.url {
                         venue.website = venueWebsite
                     }
+                    
                     print(venue.name)
                     print(venue.address)
                     
