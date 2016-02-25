@@ -9,20 +9,6 @@
 import UIKit
 import MapKit
 
-
-/*
-
-Foursquare multiple category search:
-
-/v2/venues/search?categoryId=4bf58dd8d48988d121941735,4bf58dd8d48988d11f941735,4bf58dd8d48988d1d8941735,4bf58dd8d48988d1e9931735,4bf58dd8d48988d1e7931735&ll=47.6097,-122.3331&radius=10000&intent=browse&v=20120801
-
-    to increase limit:
-
-    &limit=50
-
-*/
-
-
 class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var allBarsButton: UIButton!
@@ -30,6 +16,11 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var diveBarButton: UIButton!
     @IBOutlet weak var sportsBarButton: UIButton!
     @IBOutlet weak var casinosButton: UIButton!
+    @IBOutlet var annotationButtons: [UIButton]!
+    @IBOutlet weak var toolbar: UIToolbar!
+    @IBOutlet weak var mapStyleToolbarButton: UIBarButtonItem!
+    
+    
     
     private var locationManager:CLLocationManager?
     private let distanceSpan:Double = 500
@@ -88,7 +79,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
             return nil
         }
         
-        var pin = mapView.dequeueReusableAnnotationViewWithIdentifier("annotationIdentifier")
+        var pin = mapView.dequeueReusableAnnotationViewWithIdentifier("annotatiloconIdentifier")
         
         if pin == nil {
             pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "annotationIdentifier")
@@ -98,12 +89,47 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         
         return pin
     }
+
+    override func viewDidLayoutSubviews() {
+        
+        if mapView.mapType == .Standard {
+            changeButtonColorToBlack()
+        }
+        
+        for button in annotationButtons {
+            button.layer.cornerRadius = button.frame.size.width/2
+        }
+        
+        allBarsButton.layer.cornerRadius = self.allBarsButton.frame.size.width/2
+        clubsButton.layer.cornerRadius = self.clubsButton.frame.size.width/2
+        diveBarButton.layer.cornerRadius = self.diveBarButton.frame.size.width/2
+        sportsBarButton.layer.cornerRadius = self.sportsBarButton.frame.size.width/2
+        casinosButton.layer.cornerRadius = self.casinosButton.frame.size.width/2
+        
+    }
+    
+    func changeButtonColorToBlack() {
+        
+        for button in self.annotationButtons {
+            button.backgroundColor = UIColor.blackColor()
+            button.tintColor = UIColor.whiteColor()
+        }
+        
+    }
+    
+    func changeButtonColorToWhite() {
+        
+        for button in self.annotationButtons {
+            button.backgroundColor = UIColor.whiteColor()
+            button.tintColor = UIColor.blackColor()
+        }
+        
+    }
+    
     
     @IBAction func switchToSatelliteView(sender: AnyObject) {
-        mapView.mapType = .Hybrid
-        mapView.pitchEnabled = true
-        mapView.camera.pitch = 40
-        changeButtonColorToWhite()
+
+
         
     }
     
@@ -162,56 +188,35 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         let sportsBarSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
         sportsBarSearch.localSearch(region, queryTerm: "Sports Bar")
     }
-    
-    
-    
-    override func viewDidLayoutSubviews() {
+
+    @IBAction func hideToolbar(sender: AnyObject) {
+        toolbar.hidden = true
         
-        if mapView.mapType == .Standard {
+    }
+    
+    @IBAction func mapViewStylePressed(sender: AnyObject) {
+        
+        if mapView.mapType == .SatelliteFlyover {
+            mapView.mapType = .Standard
             changeButtonColorToBlack()
+            mapStyleToolbarButton.title = "3D"
+            
+        } else if mapView.mapType == .Standard {
+            mapView.mapType = .SatelliteFlyover
+            mapView.camera.pitch = 45
+            changeButtonColorToWhite()
+            mapStyleToolbarButton.title = "Map"
         }
         
-        allBarsButton.layer.cornerRadius = self.allBarsButton.frame.size.width/2
-        clubsButton.layer.cornerRadius = self.clubsButton.frame.size.width/2
-        diveBarButton.layer.cornerRadius = self.diveBarButton.frame.size.width/2
-        sportsBarButton.layer.cornerRadius = self.sportsBarButton.frame.size.width/2
-        casinosButton.layer.cornerRadius = self.casinosButton.frame.size.width/2
-
     }
     
-    func changeButtonColorToBlack() {
-        allBarsButton.backgroundColor = UIColor.blackColor()
-        allBarsButton.tintColor = UIColor.whiteColor()
+    @IBAction func showOrHideToolbar(sender: AnyObject) {
         
-        clubsButton.backgroundColor = UIColor.blackColor()
-        clubsButton.tintColor = UIColor.whiteColor()
-        
-        diveBarButton.backgroundColor = UIColor.blackColor()
-        diveBarButton.tintColor = UIColor.whiteColor()
-        
-        sportsBarButton.backgroundColor = UIColor.blackColor()
-        sportsBarButton.tintColor = UIColor.whiteColor()
-        
-        casinosButton.backgroundColor = UIColor.blackColor()
-        casinosButton.tintColor = UIColor.whiteColor()
-    
-    }
-    
-    func changeButtonColorToWhite() {
-        allBarsButton.backgroundColor = UIColor.whiteColor()
-        allBarsButton.tintColor = UIColor.blackColor()
-        
-        clubsButton.backgroundColor = UIColor.whiteColor()
-        clubsButton.tintColor = UIColor.blackColor()
-        
-        diveBarButton.backgroundColor = UIColor.whiteColor()
-        diveBarButton.tintColor = UIColor.blackColor()
-        
-        sportsBarButton.backgroundColor = UIColor.whiteColor()
-        sportsBarButton.tintColor = UIColor.blackColor()
-        
-        casinosButton.backgroundColor = UIColor.whiteColor()
-        casinosButton.tintColor = UIColor.blackColor()
+        if toolbar.hidden == false {
+            toolbar.hidden = true
+        } else {
+            toolbar.hidden = false
+        }
         
     }
     
