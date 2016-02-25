@@ -122,8 +122,8 @@
 			children = (
 				C08141031C753BA600842AAF /* AppDelegate.swift */,
 				C08141311C753BC700842AAF /* MapVC.swift */,
-				C08141351C7622B900842AAF /* SpotDetailVC.swift */,
 				C08141331C7622A200842AAF /* SpotListVC.swift */,
+				C08141351C7622B900842AAF /* SpotDetailVC.swift */,
 				C036E0E41C79622F00BC37F4 /* LocalSearchAPI.swift */,
 				C08141071C753BA600842AAF /* Main.storyboard */,
 				C081410A1C753BA600842AAF /* Assets.xcassets */,

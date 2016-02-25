@@ -29,13 +29,12 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+        self.navigationController?.navigationBarHidden = true
+
         if let mapView = self.mapView {
             mapView.delegate = self
             mapView.showsPointsOfInterest = false
@@ -189,11 +188,6 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         sportsBarSearch.localSearch(region, queryTerm: "Sports Bar")
     }
 
-    @IBAction func hideToolbar(sender: AnyObject) {
-        toolbar.hidden = true
-        
-    }
-    
     @IBAction func mapViewStylePressed(sender: AnyObject) {
         
         if mapView.mapType == .SatelliteFlyover {
