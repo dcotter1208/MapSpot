@@ -18,6 +18,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var casinosButton: UIButton!
     @IBOutlet var annotationButtons: [UIButton]!
     @IBOutlet weak var toolbar: UIToolbar!
+    @IBOutlet weak var mapStyleToolbarButton: UIBarButtonItem!
     
     
     
@@ -88,15 +89,15 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         
         return pin
     }
-    
-    
-    
-    
-    
+
     override func viewDidLayoutSubviews() {
         
         if mapView.mapType == .Standard {
             changeButtonColorToBlack()
+        }
+        
+        for button in annotationButtons {
+            button.layer.cornerRadius = button.frame.size.width/2
         }
         
         allBarsButton.layer.cornerRadius = self.allBarsButton.frame.size.width/2
@@ -128,10 +129,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     @IBAction func switchToSatelliteView(sender: AnyObject) {
 
-        mapView.mapType = .SatelliteFlyover
-        mapView.camera.pitch = 45
 
-        changeButtonColorToWhite()
         
     }
     
@@ -193,6 +191,32 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBAction func hideToolbar(sender: AnyObject) {
         toolbar.hidden = true
+        
+    }
+    
+    @IBAction func mapViewStylePressed(sender: AnyObject) {
+        
+        if mapView.mapType == .SatelliteFlyover {
+            mapView.mapType = .Standard
+            changeButtonColorToBlack()
+            mapStyleToolbarButton.title = "3D"
+            
+        } else if mapView.mapType == .Standard {
+            mapView.mapType = .SatelliteFlyover
+            mapView.camera.pitch = 45
+            changeButtonColorToWhite()
+            mapStyleToolbarButton.title = "Map"
+        }
+        
+    }
+    
+    @IBAction func showOrHideToolbar(sender: AnyObject) {
+        
+        if toolbar.hidden == false {
+            toolbar.hidden = true
+        } else {
+            toolbar.hidden = false
+        }
         
     }
     
