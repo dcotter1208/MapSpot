@@ -9,15 +9,11 @@
 import Foundation
 import MapKit
 
-class MapAnnotation: NSObject, MKAnnotation {
-    let title:String?
-    let subtitle:String?
-    let coordinate: CLLocationCoordinate2D
+class Annotation: MKPointAnnotation {
+    let pinImage: String?
     
-    init(title: String?, subtitle:String?, coordinate: CLLocationCoordinate2D) {
-        self.title = title
-        self.subtitle = subtitle
-        self.coordinate = coordinate
+    init(pinImage: String?) {
+        self.pinImage = pinImage
         
         super.init()
     }

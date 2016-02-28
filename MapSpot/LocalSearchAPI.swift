@@ -32,8 +32,6 @@ class LocalSearchAPI {
             if let mapItems = response?.mapItems {
                 for item:MKMapItem in mapItems {
                     
-                    print(item)
-                    
                     let venue = Venue()
                     
                     if let venueName = item.name {
@@ -57,13 +55,10 @@ class LocalSearchAPI {
                         venue.website = venueWebsite
                     }
                     
-                    print(venue.name)
-                    print(venue.address)
-                    
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.venueArray.append(venue)
                         self.createAnnotation(self.mapView)
-                        print(self.venueArray.count)
+                        print("Array Count: \(self.venueArray.count)")
                     })
                 }
             }
@@ -71,17 +66,21 @@ class LocalSearchAPI {
     }
     
     func createAnnotation(map:MKMapView) {
+        
         for venue in venueArray {
-            let annotation = MapAnnotation(title: venue.name, subtitle: venue.address, coordinate: CLLocationCoordinate2D(latitude: Double(venue.lat), longitude: Double(venue.long)))
-                map.addAnnotation(annotation)
+
+                var annotationView = MKPinAnnotationView()
+                let annotation = Annotation(pinImage: "Arrow")
+                annotation.title = venue.name
+                annotation.subtitle = venue.address
+                annotation.coordinate = CLLocationCoordinate2DMake(venue.lat, venue.long)
+                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+                annotationView.image = UIImage(named: annotation.pinImage!)
+                map.addAnnotation(annotationView.annotation!)
+
         }
     }
 
-    
-    
+
 }
-
-
-
-
 

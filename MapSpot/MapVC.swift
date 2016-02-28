@@ -19,9 +19,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet var annotationButtons: [UIButton]!
     @IBOutlet weak var toolbar: UIToolbar!
     @IBOutlet weak var mapStyleToolbarButton: UIBarButtonItem!
-    
-    
-    
+
     private var locationManager:CLLocationManager?
     private let distanceSpan:Double = 500
     private var region = MKCoordinateRegion()
@@ -29,6 +27,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -45,7 +44,6 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     override func viewDidAppear(animated: Bool) {
         if locationManager == nil {
             locationManager = CLLocationManager()
-            
             locationManager!.delegate = self
             locationManager!.desiredAccuracy = kCLLocationAccuracyBestForNavigation
             locationManager!.requestAlwaysAuthorization()
@@ -70,7 +68,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
             }
         }
     
-
+    
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
         //First, check if the annotation isn’t accidentally the user blip.
@@ -78,10 +76,12 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
             return nil
         }
         
-        var pin = mapView.dequeueReusableAnnotationViewWithIdentifier("annotatiloconIdentifier")
+        var pin = mapView.dequeueReusableAnnotationViewWithIdentifier("annotationIdentifier")
         
         if pin == nil {
-            pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "annotationIdentifier")
+            pin = MKAnnotationView(annotation: annotation, reuseIdentifier: "annotationIdentifier")
+            pin?.image = UIImage(named: "Arrow")
+            pin?.backgroundColor = UIColor.blueColor()
         }
         
         pin?.canShowCallout = true
@@ -124,13 +124,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         }
         
     }
-    
-    
-    @IBAction func switchToSatelliteView(sender: AnyObject) {
 
-
-        
-    }
     
     @IBAction func findBars(sender: AnyObject) {
         
