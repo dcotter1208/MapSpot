@@ -9,6 +9,16 @@
 import Foundation
 import MapKit
 
+enum SearchTerm: String {
+    case Default = "Fun"
+    case Bar = "Bar"
+    case DanceClub = "Dance Clubs"
+    case DiveBar = "Dive Bar"
+    case Drinks = "Drinks"
+    case SportsBar = "Sports Bar"
+    case Casino = "Casino"
+}
+
 class LocalSearchAPI {
     
     var venueArray: [Venue]
@@ -19,12 +29,16 @@ class LocalSearchAPI {
         self.mapView = mapView
     }
     
-    func localSearch(region: MKCoordinateRegion, queryTerm: String) {
-        let requestBar = MKLocalSearchRequest()
-        requestBar.naturalLanguageQuery = queryTerm
-        requestBar.region = region
+    func localSearch(region: MKCoordinateRegion, searchQuery: SearchTerm) {
+
+        let searchRequest = MKLocalSearchRequest()
+        let searchTerm = searchQuery.rawValue
+        searchRequest.naturalLanguageQuery = searchTerm
+        searchRequest.region = region
         
-        let search = MKLocalSearch(request: requestBar)
+//        print("Search Term: \(searchTerm)")
+//        
+        let search = MKLocalSearch(request: searchRequest)
         
         search.startWithCompletionHandler {
             (response, error) -> Void in
@@ -55,10 +69,11 @@ class LocalSearchAPI {
                         venue.website = venueWebsite
                     }
                     
+                    self.decideVenueType(searchQuery, venue: venue)
+                    
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.venueArray.append(venue)
                         self.createAnnotation(self.mapView)
-                        print("Array Count: \(self.venueArray.count)")
                     })
                 }
             }
@@ -68,18 +83,32 @@ class LocalSearchAPI {
     func createAnnotation(map:MKMapView) {
         
         for venue in venueArray {
-
-                var annotationView = MKPinAnnotationView()
-                let annotation = Annotation(pinImage: "Arrow")
-                annotation.title = venue.name
-                annotation.subtitle = venue.address
-                annotation.coordinate = CLLocationCoordinate2DMake(venue.lat, venue.long)
-                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
-                annotationView.image = UIImage(named: annotation.pinImage!)
-                map.addAnnotation(annotationView.annotation!)
-
+            
+            let coordinate = CLLocationCoordinate2DMake(venue.lat, venue.long)
+            let locationAnnotation = LocationAnnotation(coordinate: coordinate, title: venue.name, subtitle: venue.address, type: venue.locationType!)
+            locationAnnotation.title = venue.name
+            locationAnnotation.subtitle = venue.address
+            locationAnnotation.coordinate = CLLocationCoordinate2DMake(venue.lat, venue.long)
+            map.addAnnotation(locationAnnotation)
+            
         }
     }
+    
+    func decideVenueType(queryType: SearchTerm, venue: Venue) {
+                
+        switch queryType {
+        case .Bar, .DanceClub, .DiveBar, .Drinks, .SportsBar:
+            venue.locationType = LocationType.Bar
+//            print("Venue Type is a Bar: \(venue.locationType)")
+        case .Casino:
+            venue.locationType = LocationType.Casino
+            print("Venue Type is a Casino: \(venue.locationType)")
+        default:
+            venue.locationType = LocationType.AnnotationDefault
+//            print("Fun")
+        }
+    }
+
 
 
 }

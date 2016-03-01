@@ -1,3 +1,4 @@
+
 //
 //  MapVC.swift
 //  MapSpot
@@ -79,9 +80,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         var pin = mapView.dequeueReusableAnnotationViewWithIdentifier("annotationIdentifier")
         
         if pin == nil {
-            pin = MKAnnotationView(annotation: annotation, reuseIdentifier: "annotationIdentifier")
-            pin?.image = UIImage(named: "Arrow")
-            pin?.backgroundColor = UIColor.blueColor()
+            pin = LocationAnnotationView(annotation: annotation, reuseIdentifier: "annotationIdentifier")
         }
         
         pin?.canShowCallout = true
@@ -124,27 +123,26 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         }
         
     }
-
-    
+        
     @IBAction func findBars(sender: AnyObject) {
         
         venueArray.removeAll()
         mapView.removeAnnotations(mapView.annotations)
 
         let barSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        barSearch.localSearch(region, queryTerm: "Bar")
+        barSearch.localSearch(region, searchQuery: .Bar)
         
         let danceClubSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        danceClubSearch.localSearch(region, queryTerm: "Dance Clubs")
+        danceClubSearch.localSearch(region, searchQuery: .DanceClub)
         
         let diveBarSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        diveBarSearch.localSearch(region, queryTerm: "Dive Bar")
+        diveBarSearch.localSearch(region, searchQuery: .DiveBar)
         
         let drinksSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        drinksSearch.localSearch(region, queryTerm: "Drinks")
+        drinksSearch.localSearch(region, searchQuery: .Drinks)
         
         let sportsBarSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        sportsBarSearch.localSearch(region, queryTerm: "Sports Bar")
+        sportsBarSearch.localSearch(region, searchQuery: .SportsBar)
         
     }
     
@@ -153,10 +151,9 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         mapView.removeAnnotations(mapView.annotations)
 
         let casinoSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        casinoSearch.localSearch(region, queryTerm: "Casinos")
-        let MGMSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        MGMSearch.localSearch(region, queryTerm: "MGM Grand Detroit")
-        
+        casinoSearch.localSearch(region, searchQuery: .Casino)
+//        let MGMSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
+//        MGMSearch.localSearch(region, searchTerm: "MGM Grand Detroit")
         
     }
     
@@ -164,7 +161,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         venueArray.removeAll()
         mapView.removeAnnotations(mapView.annotations)
         let danceClubSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        danceClubSearch.localSearch(region, queryTerm: "Dance Clubs")
+        danceClubSearch.localSearch(region, searchQuery: .DanceClub)
 
     }
     
@@ -172,14 +169,14 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         venueArray.removeAll()
         mapView.removeAnnotations(mapView.annotations)
         let diveBarSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        diveBarSearch.localSearch(region, queryTerm: "Dive Bar")
+        diveBarSearch.localSearch(region, searchQuery : .DiveBar)
     }
     
     @IBAction func findSportsBars(sender: AnyObject) {
         venueArray.removeAll()
         mapView.removeAnnotations(mapView.annotations)
         let sportsBarSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        sportsBarSearch.localSearch(region, queryTerm: "Sports Bar")
+        sportsBarSearch.localSearch(region, searchQuery: .SportsBar)
     }
 
     @IBAction func mapViewStylePressed(sender: AnyObject) {

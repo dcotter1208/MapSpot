@@ -16,6 +16,7 @@ class Venue {
     var website =  NSURL()
     var lat = 0.00
     var long = 0.00
+    var locationType: LocationType?
     
     var coordinate:CLLocation {
         return CLLocation(latitude: Double(lat), longitude: Double(long));
