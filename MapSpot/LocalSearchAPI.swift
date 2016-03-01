@@ -30,14 +30,15 @@ class LocalSearchAPI {
     }
     
     func localSearch(region: MKCoordinateRegion, searchQuery: SearchTerm) {
-
+        
+        venueArray.removeAll()
+        mapView.removeAnnotations(mapView.annotations)
+        
         let searchRequest = MKLocalSearchRequest()
         let searchTerm = searchQuery.rawValue
         searchRequest.naturalLanguageQuery = searchTerm
         searchRequest.region = region
-        
-//        print("Search Term: \(searchTerm)")
-//        
+
         let search = MKLocalSearch(request: searchRequest)
         
         search.startWithCompletionHandler {
@@ -99,13 +100,13 @@ class LocalSearchAPI {
         switch queryType {
         case .Bar, .DanceClub, .DiveBar, .Drinks, .SportsBar:
             venue.locationType = LocationType.Bar
-//            print("Venue Type is a Bar: \(venue.locationType)")
+            print("Venue Type is a Bar: \(venue.locationType)")
         case .Casino:
             venue.locationType = LocationType.Casino
             print("Venue Type is a Casino: \(venue.locationType)")
         default:
             venue.locationType = LocationType.AnnotationDefault
-//            print("Fun")
+            print("Fun")
         }
     }
 

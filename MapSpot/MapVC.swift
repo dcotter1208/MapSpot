@@ -77,15 +77,20 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
             return nil
         }
         
-        var pin = mapView.dequeueReusableAnnotationViewWithIdentifier("annotationIdentifier")
-        
-        if pin == nil {
-            pin = LocationAnnotationView(annotation: annotation, reuseIdentifier: "annotationIdentifier")
-        }
-        
-        pin?.canShowCallout = true
-        
-        return pin
+        let annotationView = LocationAnnotationView(annotation: annotation, reuseIdentifier: "Location")
+        annotationView.canShowCallout = true
+        return annotationView
+//        
+//        var pin = mapView.dequeueReusableAnnotationViewWithIdentifier("annotationIdentifier")
+//
+//        if pin == nil {
+//            pin = LocationAnnotationView(annotation: annotation, reuseIdentifier: "annotationIdentifier")
+//            
+//        }
+//        
+//        pin?.canShowCallout = true
+//        
+//        return pin
     }
 
     override func viewDidLayoutSubviews() {
@@ -125,9 +130,6 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     }
         
     @IBAction func findBars(sender: AnyObject) {
-        
-        venueArray.removeAll()
-        mapView.removeAnnotations(mapView.annotations)
 
         let barSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
         barSearch.localSearch(region, searchQuery: .Bar)
@@ -143,12 +145,10 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         
         let sportsBarSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
         sportsBarSearch.localSearch(region, searchQuery: .SportsBar)
-        
+
     }
     
     @IBAction func findCasinos(sender: AnyObject) {
-        venueArray.removeAll()
-        mapView.removeAnnotations(mapView.annotations)
 
         let casinoSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
         casinoSearch.localSearch(region, searchQuery: .Casino)
@@ -158,23 +158,20 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     }
     
     @IBAction func findClubs(sender: AnyObject) {
-        venueArray.removeAll()
-        mapView.removeAnnotations(mapView.annotations)
+        
         let danceClubSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
         danceClubSearch.localSearch(region, searchQuery: .DanceClub)
 
     }
     
     @IBAction func findDiveBars(sender: AnyObject) {
-        venueArray.removeAll()
-        mapView.removeAnnotations(mapView.annotations)
+
         let diveBarSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
         diveBarSearch.localSearch(region, searchQuery : .DiveBar)
     }
     
     @IBAction func findSportsBars(sender: AnyObject) {
-        venueArray.removeAll()
-        mapView.removeAnnotations(mapView.annotations)
+
         let sportsBarSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
         sportsBarSearch.localSearch(region, searchQuery: .SportsBar)
     }

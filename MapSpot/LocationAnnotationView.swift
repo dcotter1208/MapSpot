@@ -11,12 +11,10 @@ import MapKit
 
 class LocationAnnotationView: MKAnnotationView {
     
-    // Required for MKAnnotationView
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
-    // Called when drawing the AttractionAnnotationView
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -26,6 +24,7 @@ class LocationAnnotationView: MKAnnotationView {
         let locationAnnotation = self.annotation as! LocationAnnotation
 
         switch (locationAnnotation.type) {
+            
         case .Bar:
             image = UIImage(named: "bar")
             print("image is a bar")
