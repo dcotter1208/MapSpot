@@ -17,6 +17,8 @@ enum SearchTerm: String {
     case Drinks = "Drinks"
     case SportsBar = "Sports Bar"
     case Casino = "Casino"
+    case Stadium = "Stadium"
+    case Arena = "Arena"
 }
 
 class LocalSearchAPI {
@@ -70,7 +72,7 @@ class LocalSearchAPI {
                         venue.website = venueWebsite
                     }
                     
-                    self.decideVenueType(searchQuery, venue: venue)
+                    self.decideLocationType(searchQuery, venue: venue)
                     
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.venueArray.append(venue)
@@ -95,7 +97,7 @@ class LocalSearchAPI {
         }
     }
     
-    func decideVenueType(queryType: SearchTerm, venue: Venue) {
+    func decideLocationType(queryType: SearchTerm, venue: Venue) {
                 
         switch queryType {
         case .Bar, .DanceClub, .DiveBar, .Drinks, .SportsBar:
@@ -104,6 +106,8 @@ class LocalSearchAPI {
         case .Casino:
             venue.locationType = LocationType.Casino
             print("Venue Type is a Casino: \(venue.locationType)")
+        case .Stadium, .Arena:
+            venue.locationType = LocationType.SportsStadium
         default:
             venue.locationType = LocationType.AnnotationDefault
             print("Fun")

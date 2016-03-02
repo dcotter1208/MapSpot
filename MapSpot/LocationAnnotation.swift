@@ -13,6 +13,7 @@ enum LocationType {
     case AnnotationDefault
     case Bar
     case Casino
+    case SportsStadium
 }
 
 class LocationAnnotation: NSObject, MKAnnotation {

@@ -12,11 +12,6 @@ import MapKit
 
 class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var allBarsButton: UIButton!
-    @IBOutlet weak var clubsButton: UIButton!
-    @IBOutlet weak var diveBarButton: UIButton!
-    @IBOutlet weak var sportsBarButton: UIButton!
-    @IBOutlet weak var casinosButton: UIButton!
     @IBOutlet var annotationButtons: [UIButton]!
     @IBOutlet weak var toolbar: UIToolbar!
     @IBOutlet weak var mapStyleToolbarButton: UIBarButtonItem!
@@ -80,17 +75,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         let annotationView = LocationAnnotationView(annotation: annotation, reuseIdentifier: "Location")
         annotationView.canShowCallout = true
         return annotationView
-//        
-//        var pin = mapView.dequeueReusableAnnotationViewWithIdentifier("annotationIdentifier")
-//
-//        if pin == nil {
-//            pin = LocationAnnotationView(annotation: annotation, reuseIdentifier: "annotationIdentifier")
-//            
-//        }
-//        
-//        pin?.canShowCallout = true
-//        
-//        return pin
+
     }
 
     override func viewDidLayoutSubviews() {
@@ -102,12 +87,6 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         for button in annotationButtons {
             button.layer.cornerRadius = button.frame.size.width/2
         }
-        
-        allBarsButton.layer.cornerRadius = self.allBarsButton.frame.size.width/2
-        clubsButton.layer.cornerRadius = self.clubsButton.frame.size.width/2
-        diveBarButton.layer.cornerRadius = self.diveBarButton.frame.size.width/2
-        sportsBarButton.layer.cornerRadius = self.sportsBarButton.frame.size.width/2
-        casinosButton.layer.cornerRadius = self.casinosButton.frame.size.width/2
         
     }
     
@@ -152,8 +131,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
         let casinoSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
         casinoSearch.localSearch(region, searchQuery: .Casino)
-//        let MGMSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-//        MGMSearch.localSearch(region, searchTerm: "MGM Grand Detroit")
+
         
     }
     
@@ -176,6 +154,28 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         sportsBarSearch.localSearch(region, searchQuery: .SportsBar)
     }
 
+    @IBAction func findSportsStadiums(sender: AnyObject) {
+        
+        let sportsStadiumsSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
+        sportsStadiumsSearch.localSearch(region, searchQuery: .Stadium)
+        
+        let sportsArenaSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
+        sportsArenaSearch.localSearch(region, searchQuery: .Arena)
+        
+    }
+    
+    @IBAction func findAllFun(sender: AnyObject) {
+        let sportsStadiumsSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
+        sportsStadiumsSearch.localSearch(region, searchQuery: .Stadium)
+        
+        let sportsArenaSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
+        sportsArenaSearch.localSearch(region, searchQuery: .Arena)
+        
+        let casinoSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
+        casinoSearch.localSearch(region, searchQuery: .Casino)
+        
+    }
+    
     @IBAction func mapViewStylePressed(sender: AnyObject) {
         
         if mapView.mapType == .SatelliteFlyover {
