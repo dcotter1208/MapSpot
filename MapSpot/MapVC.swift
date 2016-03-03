@@ -124,15 +124,10 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         
         let sportsBarSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
         sportsBarSearch.localSearch(region, searchQuery: .SportsBar)
-
-    }
-    
-    @IBAction func findCasinos(sender: AnyObject) {
-
-        let casinoSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        casinoSearch.localSearch(region, searchQuery: .Casino)
-
         
+        let brewerySearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
+        brewerySearch.localSearch(region, searchQuery: .Brewery)
+
     }
     
     @IBAction func findClubs(sender: AnyObject) {
@@ -174,7 +169,37 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         let casinoSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
         casinoSearch.localSearch(region, searchQuery: .Casino)
         
+        let musicVenueSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
+        musicVenueSearch.localSearch(region, searchQuery: .MusicVenue)
+        
+        let musicSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
+        musicSearch.localSearch(region, searchQuery: .Music)
+        
+        let theatreSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
+        theatreSearch.localSearch(region, searchQuery: .Theatre)
+        
     }
+    
+    @IBAction func findCasinos(sender: AnyObject) {
+        
+        let casinoSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
+        casinoSearch.localSearch(region, searchQuery: .Casino)
+        
+    }
+    
+    @IBAction func findMusicVenue(sender: AnyObject) {
+        
+        let musicVenueSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
+        musicVenueSearch.localSearch(region, searchQuery: .MusicVenue)
+        
+        let musicSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
+        musicSearch.localSearch(region, searchQuery: .Music)
+        
+        let theatreSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
+        theatreSearch.localSearch(region, searchQuery: .Theatre)
+        
+    }
+    
     
     @IBAction func mapViewStylePressed(sender: AnyObject) {
         
@@ -198,6 +223,20 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
             toolbar.hidden = true
         } else {
             toolbar.hidden = false
+        }
+        
+    }
+    
+    
+    @IBAction func showMenuItems(sender: AnyObject) {
+        
+        for button in annotationButtons {
+            if button.hidden == false {
+                button.hidden = true
+            } else {
+                button.hidden = false
+            }
+            
         }
         
     }
