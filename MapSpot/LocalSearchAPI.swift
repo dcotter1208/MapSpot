@@ -16,9 +16,13 @@ enum SearchTerm: String {
     case DiveBar = "Dive Bar"
     case Drinks = "Drinks"
     case SportsBar = "Sports Bar"
+    case Brewery = "Brewery"
     case Casino = "Casino"
     case Stadium = "Stadium"
     case Arena = "Arena"
+    case MusicVenue = "Music Venues"
+    case Music = "Music"
+    case Theatre = "Theatre"
 }
 
 class LocalSearchAPI {
@@ -100,7 +104,7 @@ class LocalSearchAPI {
     func decideLocationType(queryType: SearchTerm, venue: Venue) {
                 
         switch queryType {
-        case .Bar, .DanceClub, .DiveBar, .Drinks, .SportsBar:
+        case .Bar, .DanceClub, .DiveBar, .Drinks, .SportsBar, .Brewery:
             venue.locationType = LocationType.Bar
             print("Venue Type is a Bar: \(venue.locationType)")
         case .Casino:
