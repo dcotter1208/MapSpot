@@ -9,6 +9,18 @@
 import Foundation
 import MapKit
 
+enum SearchTerm: String {
+    case Default = "Fun"
+    case Bar = "Bar"
+    case DanceClub = "Dance Clubs"
+    case DiveBar = "Dive Bar"
+    case Drinks = "Drinks"
+    case SportsBar = "Sports Bar"
+    case Casino = "Casino"
+    case Stadium = "Stadium"
+    case Arena = "Arena"
+}
+
 class LocalSearchAPI {
     
     var venueArray: [Venue]
@@ -19,20 +31,23 @@ class LocalSearchAPI {
         self.mapView = mapView
     }
     
-    func localSearch(region: MKCoordinateRegion, queryTerm: String) {
-        let requestBar = MKLocalSearchRequest()
-        requestBar.naturalLanguageQuery = queryTerm
-        requestBar.region = region
+    func localSearch(region: MKCoordinateRegion, searchQuery: SearchTerm) {
         
-        let search = MKLocalSearch(request: requestBar)
+        venueArray.removeAll()
+        mapView.removeAnnotations(mapView.annotations)
+        
+        let searchRequest = MKLocalSearchRequest()
+        let searchTerm = searchQuery.rawValue
+        searchRequest.naturalLanguageQuery = searchTerm
+        searchRequest.region = region
+
+        let search = MKLocalSearch(request: searchRequest)
         
         search.startWithCompletionHandler {
             (response, error) -> Void in
             
             if let mapItems = response?.mapItems {
                 for item:MKMapItem in mapItems {
-                    
-                    print(item)
                     
                     let venue = Venue()
                     
@@ -57,13 +72,11 @@ class LocalSearchAPI {
                         venue.website = venueWebsite
                     }
                     
-                    print(venue.name)
-                    print(venue.address)
+                    self.decideLocationType(searchQuery, venue: venue)
                     
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.venueArray.append(venue)
                         self.createAnnotation(self.mapView)
-                        print(self.venueArray.count)
                     })
                 }
             }
@@ -71,17 +84,37 @@ class LocalSearchAPI {
     }
     
     func createAnnotation(map:MKMapView) {
+        
         for venue in venueArray {
-            let annotation = MapAnnotation(title: venue.name, subtitle: venue.address, coordinate: CLLocationCoordinate2D(latitude: Double(venue.lat), longitude: Double(venue.long)))
-                map.addAnnotation(annotation)
+            
+            let coordinate = CLLocationCoordinate2DMake(venue.lat, venue.long)
+            let locationAnnotation = LocationAnnotation(coordinate: coordinate, title: venue.name, subtitle: venue.address, type: venue.locationType!)
+            locationAnnotation.title = venue.name
+            locationAnnotation.subtitle = venue.address
+            locationAnnotation.coordinate = CLLocationCoordinate2DMake(venue.lat, venue.long)
+            map.addAnnotation(locationAnnotation)
+            
+        }
+    }
+    
+    func decideLocationType(queryType: SearchTerm, venue: Venue) {
+                
+        switch queryType {
+        case .Bar, .DanceClub, .DiveBar, .Drinks, .SportsBar:
+            venue.locationType = LocationType.Bar
+            print("Venue Type is a Bar: \(venue.locationType)")
+        case .Casino:
+            venue.locationType = LocationType.Casino
+            print("Venue Type is a Casino: \(venue.locationType)")
+        case .Stadium, .Arena:
+            venue.locationType = LocationType.SportsStadium
+        default:
+            venue.locationType = LocationType.AnnotationDefault
+            print("Fun")
         }
     }
 
-    
-    
+
+
 }
-
-
-
-
 
