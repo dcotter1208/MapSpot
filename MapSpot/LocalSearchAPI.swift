@@ -20,9 +20,8 @@ enum SearchTerm: String {
     case Casino = "Casino"
     case Stadium = "Stadium"
     case Arena = "Arena"
-    case MusicVenue = "Music Venues"
-    case Music = "Music"
-    case Theatre = "Theatre"
+    case ConcertVenue = "Concert Venues"
+    case Theatre = "Performing Arts Theatre"
 }
 
 class LocalSearchAPI {
@@ -118,7 +117,16 @@ class LocalSearchAPI {
         }
     }
 
+    func containsString(string:String)-> Bool {
+    
+        let venue = Venue()
+        
+            if venue.name.containsString(string) {
+                return true
+        }
 
+        return false
+    }
 
 }
 
