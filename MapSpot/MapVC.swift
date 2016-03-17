@@ -10,7 +10,7 @@
 import UIKit
 import MapKit
 
-class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIScrollViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet var annotationButtons: [UIButton]!
     @IBOutlet weak var toolbar: UIToolbar!
@@ -87,7 +87,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         for button in annotationButtons {
             button.layer.cornerRadius = button.frame.size.width/2
         }
-        
+                
     }
     
     func changeButtonColorToBlack() {
@@ -170,10 +170,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         casinoSearch.localSearch(region, searchQuery: .Casino)
         
         let musicVenueSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        musicVenueSearch.localSearch(region, searchQuery: .MusicVenue)
-        
-        let musicSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        musicSearch.localSearch(region, searchQuery: .Music)
+        musicVenueSearch.localSearch(region, searchQuery: .ConcertVenue)
         
         let theatreSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
         theatreSearch.localSearch(region, searchQuery: .Theatre)
@@ -190,11 +187,8 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBAction func findMusicVenue(sender: AnyObject) {
         
         let musicVenueSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        musicVenueSearch.localSearch(region, searchQuery: .MusicVenue)
-        
-        let musicSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        musicSearch.localSearch(region, searchQuery: .Music)
-        
+        musicVenueSearch.localSearch(region, searchQuery: .ConcertVenue)
+
         let theatreSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
         theatreSearch.localSearch(region, searchQuery: .Theatre)
         
@@ -218,7 +212,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     }
     
     @IBAction func showOrHideToolbar(sender: AnyObject) {
-        
+
         if toolbar.hidden == false {
             toolbar.hidden = true
         } else {
@@ -229,6 +223,10 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     
     @IBAction func showMenuItems(sender: AnyObject) {
+        
+//        let MapMenuVC:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("MapMenuVC") as UIViewController
+//        
+//        self.presentViewController(MapMenuVC, animated: false, completion: nil)
         
         for button in annotationButtons {
             if button.hidden == false {

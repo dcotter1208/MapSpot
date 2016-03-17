@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C018B3581C889F0300711525 /* MapMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C018B3571C889F0300711525 /* MapMenuVC.swift */; };
 		C0266D371C775EC10028D4E7 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0266D361C775EC10028D4E7 /* Venue.swift */; };
 		C036E0E31C79468F00BC37F4 /* LocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C036E0E21C79468F00BC37F4 /* LocationAnnotation.swift */; };
 		C036E0E51C79622F00BC37F4 /* LocalSearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C036E0E41C79622F00BC37F4 /* LocalSearchAPI.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C018B3571C889F0300711525 /* MapMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapMenuVC.swift; sourceTree = "<group>"; };
 		C0266D361C775EC10028D4E7 /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		C036E0E21C79468F00BC37F4 /* LocationAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAnnotation.swift; sourceTree = "<group>"; };
 		C036E0E41C79622F00BC37F4 /* LocalSearchAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalSearchAPI.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				C08141331C7622A200842AAF /* SpotListVC.swift */,
 				C08141351C7622B900842AAF /* SpotDetailVC.swift */,
 				C036E0E41C79622F00BC37F4 /* LocalSearchAPI.swift */,
+				C018B3571C889F0300711525 /* MapMenuVC.swift */,
 				C08141071C753BA600842AAF /* Main.storyboard */,
 				C081410A1C753BA600842AAF /* Assets.xcassets */,
 				C081410C1C753BA600842AAF /* LaunchScreen.storyboard */,
@@ -289,6 +292,7 @@
 				C08141341C7622A200842AAF /* SpotListVC.swift in Sources */,
 				C0266D371C775EC10028D4E7 /* Venue.swift in Sources */,
 				C08141041C753BA600842AAF /* AppDelegate.swift in Sources */,
+				C018B3581C889F0300711525 /* MapMenuVC.swift in Sources */,
 				C08141321C753BC700842AAF /* MapVC.swift in Sources */,
 				C036E0E31C79468F00BC37F4 /* LocationAnnotation.swift in Sources */,
 				C08141361C7622B900842AAF /* SpotDetailVC.swift in Sources */,
