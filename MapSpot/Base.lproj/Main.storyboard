@@ -206,6 +206,7 @@
                         <outletCollection property="annotationButtons" destination="hGe-Ax-pVI" collectionClass="NSMutableArray" id="94J-D2-ToW"/>
                         <outletCollection property="annotationButtons" destination="F3B-c7-VKj" collectionClass="NSMutableArray" id="Mtp-0b-Vkb"/>
                         <outletCollection property="annotationButtons" destination="Fiv-pd-8C3" collectionClass="NSMutableArray" id="Gr5-Wa-vsj"/>
+                        <segue destination="zds-JU-k95" kind="show" identifier="mapToDetailVC" id="7bJ-6q-6ux"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -271,7 +272,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O2l-aH-Kec" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4145" y="1007"/>
+            <point key="canvasLocation" x="4287" y="656"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RiK-81-hWD">
@@ -292,4 +293,7 @@
             <point key="canvasLocation" x="2637" y="299"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="7bJ-6q-6ux"/>
+    </inferredMetricsTieBreakers>
 </document>

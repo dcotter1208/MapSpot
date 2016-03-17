@@ -74,8 +74,15 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         
         let annotationView = LocationAnnotationView(annotation: annotation, reuseIdentifier: "Location")
         annotationView.canShowCallout = true
+        annotationView.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
         return annotationView
 
+    }
+    
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        
+        self.performSegueWithIdentifier("mapToDetailVC", sender: self)
+        
     }
 
     override func viewDidLayoutSubviews() {
@@ -223,10 +230,6 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     
     
     @IBAction func showMenuItems(sender: AnyObject) {
-        
-//        let MapMenuVC:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("MapMenuVC") as UIViewController
-//        
-//        self.presentViewController(MapMenuVC, animated: false, completion: nil)
         
         for button in annotationButtons {
             if button.hidden == false {
