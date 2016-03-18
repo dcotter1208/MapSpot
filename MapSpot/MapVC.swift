@@ -28,12 +28,10 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBarHidden = true
 
         if let mapView = self.mapView {
             mapView.delegate = self
             mapView.showsPointsOfInterest = false
-            
         }
     }
     
@@ -218,12 +216,14 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         
     }
     
-    @IBAction func showOrHideToolbar(sender: AnyObject) {
+    @IBAction func showOrHideToolbarAndNavBar(sender: AnyObject) {
 
         if toolbar.hidden == false {
             toolbar.hidden = true
+            self.navigationController?.navigationBarHidden = true
         } else {
             toolbar.hidden = false
+            self.navigationController?.navigationBarHidden = false
         }
         
     }

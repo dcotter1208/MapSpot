@@ -105,15 +105,12 @@ class LocalSearchAPI {
         switch queryType {
         case .Bar, .DanceClub, .DiveBar, .Drinks, .SportsBar, .Brewery:
             venue.locationType = LocationType.Bar
-            print("Venue Type is a Bar: \(venue.locationType)")
         case .Casino:
             venue.locationType = LocationType.Casino
-            print("Venue Type is a Casino: \(venue.locationType)")
         case .Stadium, .Arena:
             venue.locationType = LocationType.SportsStadium
         default:
             venue.locationType = LocationType.AnnotationDefault
-            print("Fun")
         }
     }
 
