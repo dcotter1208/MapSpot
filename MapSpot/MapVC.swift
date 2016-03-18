@@ -20,6 +20,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     private let distanceSpan:Double = 500
     private var region = MKCoordinateRegion()
     private var venueArray = [Venue]()
+    private var selectedAnnotation: LocationAnnotation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,6 +83,11 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         self.performSegueWithIdentifier("mapToDetailVC", sender: self)
         
     }
+    
+    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+        selectedAnnotation = view.annotation as? LocationAnnotation
+        print(selectedAnnotation?.venue.name)
+    }
 
     override func viewDidLayoutSubviews() {
         
@@ -114,88 +120,59 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     }
         
     @IBAction func findBars(sender: AnyObject) {
-
+        
         let barSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        barSearch.localSearch(region, searchQuery: .Bar)
-        
-        let danceClubSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        danceClubSearch.localSearch(region, searchQuery: .DanceClub)
-        
-        let diveBarSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        diveBarSearch.localSearch(region, searchQuery: .DiveBar)
-        
-        let drinksSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        drinksSearch.localSearch(region, searchQuery: .Drinks)
-        
-        let sportsBarSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        sportsBarSearch.localSearch(region, searchQuery: .SportsBar)
-        
-        let brewerySearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        brewerySearch.localSearch(region, searchQuery: .Brewery)
+        barSearch.localSearch(region, searchQueries: [.Bar, .DanceClub, .DiveBar, .Drinks, .SportsBar, .Brewery])
 
     }
     
     @IBAction func findClubs(sender: AnyObject) {
         
         let danceClubSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        danceClubSearch.localSearch(region, searchQuery: .DanceClub)
+        danceClubSearch.localSearch(region, searchQueries: [.DanceClub])
 
     }
     
     @IBAction func findDiveBars(sender: AnyObject) {
 
         let diveBarSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        diveBarSearch.localSearch(region, searchQuery : .DiveBar)
+        diveBarSearch.localSearch(region, searchQueries : [.DiveBar])
     }
     
     @IBAction func findSportsBars(sender: AnyObject) {
 
         let sportsBarSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        sportsBarSearch.localSearch(region, searchQuery: .SportsBar)
+        sportsBarSearch.localSearch(region, searchQueries: [.SportsBar])
     }
 
     @IBAction func findSportsStadiums(sender: AnyObject) {
         
         let sportsStadiumsSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        sportsStadiumsSearch.localSearch(region, searchQuery: .Stadium)
+        sportsStadiumsSearch.localSearch(region, searchQueries: [.Stadium])
         
         let sportsArenaSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        sportsArenaSearch.localSearch(region, searchQuery: .Arena)
+        sportsArenaSearch.localSearch(region, searchQueries: [.Arena])
         
     }
     
     @IBAction func findAllFun(sender: AnyObject) {
-        let sportsStadiumsSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        sportsStadiumsSearch.localSearch(region, searchQuery: .Stadium)
         
-        let sportsArenaSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        sportsArenaSearch.localSearch(region, searchQuery: .Arena)
-        
-        let casinoSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        casinoSearch.localSearch(region, searchQuery: .Casino)
-        
-        let musicVenueSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        musicVenueSearch.localSearch(region, searchQuery: .ConcertVenue)
-        
-        let theatreSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        theatreSearch.localSearch(region, searchQuery: .Theatre)
+        let findAllFunSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
+        findAllFunSearch.localSearch(region, searchQueries: [.Stadium, .Arena, .Casino, .ConcertVenue, .Theatre])
         
     }
     
     @IBAction func findCasinos(sender: AnyObject) {
         
         let casinoSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        casinoSearch.localSearch(region, searchQuery: .Casino)
+        casinoSearch.localSearch(region, searchQueries: [.Casino])
         
     }
     
     @IBAction func findMusicVenue(sender: AnyObject) {
         
         let musicVenueSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        musicVenueSearch.localSearch(region, searchQuery: .ConcertVenue)
-
-        let theatreSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        theatreSearch.localSearch(region, searchQuery: .Theatre)
+        musicVenueSearch.localSearch(region, searchQueries: [.ConcertVenue, .Theatre])
         
     }
     

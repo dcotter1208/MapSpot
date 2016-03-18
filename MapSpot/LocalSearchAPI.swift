@@ -34,56 +34,63 @@ class LocalSearchAPI {
         self.mapView = mapView
     }
     
-    func localSearch(region: MKCoordinateRegion, searchQuery: SearchTerm) {
+    func localSearch(region: MKCoordinateRegion, searchQueries: [SearchTerm]) {
         
         venueArray.removeAll()
         mapView.removeAnnotations(mapView.annotations)
         
         let searchRequest = MKLocalSearchRequest()
-        let searchTerm = searchQuery.rawValue
-        searchRequest.naturalLanguageQuery = searchTerm
-        searchRequest.region = region
-
-        let search = MKLocalSearch(request: searchRequest)
+        var MKLocalSearchTerm: SearchTerm
         
-        search.startWithCompletionHandler {
-            (response, error) -> Void in
+        for searchTerm in searchQueries {
+        
+            MKLocalSearchTerm = searchTerm
+            searchRequest.naturalLanguageQuery = MKLocalSearchTerm.rawValue
+            searchRequest.region = region
             
-            if let mapItems = response?.mapItems {
-                for item:MKMapItem in mapItems {
-                    
-                    let venue = Venue()
-                    
-                    if let venueName = item.name {
-                        venue.name = venueName
+            let search = MKLocalSearch(request: searchRequest)
+            
+            search.startWithCompletionHandler {
+                (response, error) -> Void in
+                
+                if let mapItems = response?.mapItems {
+                    for item:MKMapItem in mapItems {
+                        
+                        let venue = Venue()
+
+                        if let venueName = item.name {
+                            venue.name = venueName
+                        }
+                        
+                        if let venuePhoneNumber = item.phoneNumber {
+                            venue.phoneNumber = venuePhoneNumber
+                        }
+                        
+                        if let venueAddress = item.placemark.title {
+                            venue.address = venueAddress
+                        }
+                        
+                        if let coordinates = item.placemark.location {
+                            venue.lat = coordinates.coordinate.latitude
+                            venue.long = coordinates.coordinate.longitude
+                        }
+                        
+                        if let venueWebsite = item.url {
+                            venue.website = venueWebsite
+                        }
+                        
+                        self.decideLocationType(searchTerm, venue: venue)
+
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.venueArray.append(venue)
+                            self.createAnnotation(self.mapView)
+                        })
                     }
-                    
-                    if let venuePhoneNumber = item.phoneNumber {
-                        venue.phoneNumber = venuePhoneNumber
-                    }
-                    
-                    if let venueAddress = item.placemark.title {
-                        venue.address = venueAddress
-                    }
-                    
-                    if let coordinates = item.placemark.location {
-                        venue.lat = coordinates.coordinate.latitude
-                        venue.long = coordinates.coordinate.longitude
-                    }
-                    
-                    if let venueWebsite = item.url {
-                        venue.website = venueWebsite
-                    }
-                    
-                    self.decideLocationType(searchQuery, venue: venue)
-                    
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.venueArray.append(venue)
-                        self.createAnnotation(self.mapView)
-                    })
                 }
             }
+
         }
+
     }
     
     func createAnnotation(map:MKMapView) {
@@ -91,7 +98,7 @@ class LocalSearchAPI {
         for venue in venueArray {
             
             let coordinate = CLLocationCoordinate2DMake(venue.lat, venue.long)
-            let locationAnnotation = LocationAnnotation(coordinate: coordinate, title: venue.name, subtitle: venue.address, type: venue.locationType!)
+            let locationAnnotation = LocationAnnotation(coordinate: coordinate, title: venue.name, subtitle: venue.address, type: venue.locationType!, venue: venue)
             locationAnnotation.title = venue.name
             locationAnnotation.subtitle = venue.address
             locationAnnotation.coordinate = CLLocationCoordinate2DMake(venue.lat, venue.long)

@@ -27,16 +27,12 @@ class LocationAnnotationView: MKAnnotationView {
             
         case .Bar:
             image = UIImage(named: "bar")
-            print("image is a bar")
         case .Casino:
             image = UIImage(named: "casino")
-            print("image is a casino")
         case .SportsStadium:
             image = UIImage(named: "stadium")
         default:
-            image = UIImage(named: "pin")
-            print("image is a pin")
-
+            image = UIImage(named: "musicVenue")
         }
     }
     

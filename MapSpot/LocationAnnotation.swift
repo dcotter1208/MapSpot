@@ -21,12 +21,14 @@ class LocationAnnotation: NSObject, MKAnnotation {
     var title: String?
     var subtitle: String?
     var type: LocationType
+    var venue: Venue
     
-    init(coordinate: CLLocationCoordinate2D, title: String, subtitle: String, type: LocationType) {
+    init(coordinate: CLLocationCoordinate2D, title: String, subtitle: String, type: LocationType, venue: Venue) {
         self.coordinate = coordinate
         self.title = title
         self.subtitle = subtitle
         self.type = type
+        self.venue = venue
     }
     
 }
