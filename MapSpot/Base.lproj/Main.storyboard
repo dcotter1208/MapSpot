@@ -9,7 +9,7 @@
         <!--LoginVC-->
         <scene sceneID="cOJ-bh-l7v">
             <objects>
-                <viewController id="es0-3T-e9P" customClass="LoginVC" customModule="MapSpot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="es0-3T-e9P" customClass="LoginVC" customModule="MapSpot" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qF4-tp-os2"/>
                         <viewControllerLayoutGuide type="bottom" id="93h-zB-O8J"/>
@@ -335,7 +335,13 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="h3c-yD-I07"/>
+                    <navigationItem key="navigationItem" id="h3c-yD-I07">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="hE6-kR-BvQ">
+                            <connections>
+                                <segue destination="90r-5F-Lar" kind="presentation" id="GCC-fo-X2r"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapStyleToolbarButton" destination="wbK-sM-cBn" id="G6u-dA-Wqt"/>
                         <outlet property="mapView" destination="VD9-v9-Ag6" id="HmO-UR-JCv"/>
@@ -398,6 +404,46 @@
             </objects>
             <point key="canvasLocation" x="3449" y="1007"/>
         </scene>
+        <!--User ProfileVC-->
+        <scene sceneID="fyp-lV-1bA">
+            <objects>
+                <viewController id="90r-5F-Lar" customClass="UserProfileVC" customModule="MapSpot" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2Wk-0B-eVU"/>
+                        <viewControllerLayoutGuide type="bottom" id="bw6-gz-o3c"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yB7-bh-ifg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QUe-cV-YUs">
+                                <rect key="frame" x="273" y="112" width="55" height="30"/>
+                                <state key="normal" title="Log Out"/>
+                                <connections>
+                                    <action selector="logOutButtonPressed:" destination="90r-5F-Lar" eventType="touchUpInside" id="MOs-jj-c6J"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S4k-GK-qWb">
+                                <rect key="frame" x="276" y="176" width="48" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="dismissView:" destination="90r-5F-Lar" eventType="touchUpInside" id="Tjj-MY-Xwu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="S4k-GK-qWb" firstAttribute="top" secondItem="QUe-cV-YUs" secondAttribute="bottom" constant="34" id="QPR-I0-u9w"/>
+                            <constraint firstItem="S4k-GK-qWb" firstAttribute="centerX" secondItem="yB7-bh-ifg" secondAttribute="centerX" id="YIx-Ox-Xzq"/>
+                            <constraint firstItem="QUe-cV-YUs" firstAttribute="centerX" secondItem="S4k-GK-qWb" secondAttribute="centerX" id="cQX-Z8-Ti0"/>
+                            <constraint firstItem="QUe-cV-YUs" firstAttribute="top" secondItem="2Wk-0B-eVU" secondAttribute="bottom" constant="92" id="wQH-8a-eKx"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gAw-H6-1Z8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4148" y="-73"/>
+        </scene>
         <!--Spot DetailVC-->
         <scene sceneID="Jsv-wP-Lg0">
             <objects>
@@ -436,7 +482,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="UBm-OV-84B"/>
+        <segue reference="ZPX-a0-8X6"/>
         <segue reference="7bJ-6q-6ux"/>
     </inferredMetricsTieBreakers>
 </document>

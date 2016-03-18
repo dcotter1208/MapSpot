@@ -28,12 +28,11 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBarHidden = true
+//        self.navigationController?.navigationBarHidden = true
 
         if let mapView = self.mapView {
             mapView.delegate = self
             mapView.showsPointsOfInterest = false
-            
         }
     }
     

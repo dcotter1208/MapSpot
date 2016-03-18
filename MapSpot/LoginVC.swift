@@ -37,9 +37,10 @@ class LoginVC: UIViewController {
             FIREBASE_REF.authUser(email, password: password, withCompletionBlock: { (error, authData) -> Void in
                 
                 if error != nil {
-                    NSUserDefaults.standardUserDefaults().setValue(authData.uid, forKey: "uid")
+                    print(error!)
                 } else {
-                    print(error)
+                    NSUserDefaults.standardUserDefaults().setValue(authData.uid, forKey: "uid")
+                    self.performSegueWithIdentifier("loginSegue", sender: nil)
                 }
                 
             })
