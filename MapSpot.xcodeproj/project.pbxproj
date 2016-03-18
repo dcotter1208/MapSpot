@@ -22,6 +22,8 @@
 		C08141341C7622A200842AAF /* SpotListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08141331C7622A200842AAF /* SpotListVC.swift */; };
 		C08141361C7622B900842AAF /* SpotDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08141351C7622B900842AAF /* SpotDetailVC.swift */; };
 		C08141381C762A0A00842AAF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C08141371C762A0A00842AAF /* MapKit.framework */; };
+		C0A151DF1C9C41C400D3E3CE /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A151DE1C9C41C400D3E3CE /* LoginVC.swift */; };
+		C0A151E11C9C41FF00D3E3CE /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A151E01C9C41FF00D3E3CE /* SignUpVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		C08141331C7622A200842AAF /* SpotListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotListVC.swift; sourceTree = "<group>"; };
 		C08141351C7622B900842AAF /* SpotDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotDetailVC.swift; sourceTree = "<group>"; };
 		C08141371C762A0A00842AAF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		C0A151DE1C9C41C400D3E3CE /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		C0A151E01C9C41FF00D3E3CE /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +131,8 @@
 			isa = PBXGroup;
 			children = (
 				C08141031C753BA600842AAF /* AppDelegate.swift */,
+				C0A151DE1C9C41C400D3E3CE /* LoginVC.swift */,
+				C0A151E01C9C41FF00D3E3CE /* SignUpVC.swift */,
 				C08141311C753BC700842AAF /* MapVC.swift */,
 				C08141331C7622A200842AAF /* SpotListVC.swift */,
 				C08141351C7622B900842AAF /* SpotDetailVC.swift */,
@@ -292,7 +298,9 @@
 				C08141341C7622A200842AAF /* SpotListVC.swift in Sources */,
 				C0266D371C775EC10028D4E7 /* Venue.swift in Sources */,
 				C08141041C753BA600842AAF /* AppDelegate.swift in Sources */,
+				C0A151E11C9C41FF00D3E3CE /* SignUpVC.swift in Sources */,
 				C018B3581C889F0300711525 /* MapMenuVC.swift in Sources */,
+				C0A151DF1C9C41C400D3E3CE /* LoginVC.swift in Sources */,
 				C08141321C753BC700842AAF /* MapVC.swift in Sources */,
 				C036E0E31C79468F00BC37F4 /* LocationAnnotation.swift in Sources */,
 				C08141361C7622B900842AAF /* SpotDetailVC.swift in Sources */,
