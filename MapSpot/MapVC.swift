@@ -20,6 +20,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     private let distanceSpan:Double = 500
     private var region = MKCoordinateRegion()
     private var venueArray = [Venue]()
+    private var selectedAnnotation: LocationAnnotation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,6 +82,11 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         
         self.performSegueWithIdentifier("mapToDetailVC", sender: self)
         
+    }
+    
+    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+        selectedAnnotation = view.annotation as? LocationAnnotation
+        print(selectedAnnotation?.venue.name)
     }
 
     override func viewDidLayoutSubviews() {

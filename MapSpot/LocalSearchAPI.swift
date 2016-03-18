@@ -98,7 +98,7 @@ class LocalSearchAPI {
         for venue in venueArray {
             
             let coordinate = CLLocationCoordinate2DMake(venue.lat, venue.long)
-            let locationAnnotation = LocationAnnotation(coordinate: coordinate, title: venue.name, subtitle: venue.address, type: venue.locationType!)
+            let locationAnnotation = LocationAnnotation(coordinate: coordinate, title: venue.name, subtitle: venue.address, type: venue.locationType!, venue: venue)
             locationAnnotation.title = venue.name
             locationAnnotation.subtitle = venue.address
             locationAnnotation.coordinate = CLLocationCoordinate2DMake(venue.lat, venue.long)
