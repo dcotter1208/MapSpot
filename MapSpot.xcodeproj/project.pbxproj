@@ -25,6 +25,7 @@
 		C08141381C762A0A00842AAF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C08141371C762A0A00842AAF /* MapKit.framework */; };
 		C0A151DF1C9C41C400D3E3CE /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A151DE1C9C41C400D3E3CE /* LoginVC.swift */; };
 		C0A151E11C9C41FF00D3E3CE /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A151E01C9C41FF00D3E3CE /* SignUpVC.swift */; };
+		C0FB04A11C9C4C9B009137B5 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FB04A01C9C4C9B009137B5 /* FirebaseService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		C08141371C762A0A00842AAF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C0A151DE1C9C41C400D3E3CE /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		C0A151E01C9C41FF00D3E3CE /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		C0FB04A01C9C4C9B009137B5 /* FirebaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		D05D111D6D7DB551410F6536 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				C08141031C753BA600842AAF /* AppDelegate.swift */,
+				C0FB04A01C9C4C9B009137B5 /* FirebaseService.swift */,
 				C0A151DE1C9C41C400D3E3CE /* LoginVC.swift */,
 				C0A151E01C9C41FF00D3E3CE /* SignUpVC.swift */,
 				C08141311C753BC700842AAF /* MapVC.swift */,
@@ -380,6 +383,7 @@
 				C036E0E31C79468F00BC37F4 /* LocationAnnotation.swift in Sources */,
 				C08141361C7622B900842AAF /* SpotDetailVC.swift in Sources */,
 				C062799D1C852F5300181934 /* LocationAnnotationView.swift in Sources */,
+				C0FB04A11C9C4C9B009137B5 /* FirebaseService.swift in Sources */,
 				C036E0E51C79622F00BC37F4 /* LocalSearchAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
