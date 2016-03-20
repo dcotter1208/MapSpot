@@ -86,9 +86,14 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     }
     
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+        if view.annotation == nil {
+            annotationInSelectedState = false
+        } else {
             annotationInSelectedState = true
             selectedAnnotation = view.annotation as? LocationAnnotation
             print(selectedAnnotation?.venue.name)
+        }
+
         
     }
     
