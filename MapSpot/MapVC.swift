@@ -21,6 +21,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     private var region = MKCoordinateRegion()
     private var venueArray = [Venue]()
     private var selectedAnnotation: LocationAnnotation?
+    private var annotationInSelectedState: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,8 +86,14 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     }
     
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
-        selectedAnnotation = view.annotation as? LocationAnnotation
-        print(selectedAnnotation?.venue.name)
+            annotationInSelectedState = true
+            selectedAnnotation = view.annotation as? LocationAnnotation
+            print(selectedAnnotation?.venue.name)
+        
+    }
+    
+    func mapView(mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView) {
+        annotationInSelectedState = false
     }
 
     override func viewDidLayoutSubviews() {
@@ -148,10 +155,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     @IBAction func findSportsStadiums(sender: AnyObject) {
         
         let sportsStadiumsSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        sportsStadiumsSearch.localSearch(region, searchQueries: [.Stadium])
-        
-        let sportsArenaSearch = LocalSearchAPI(venueArray: venueArray, mapView: mapView)
-        sportsArenaSearch.localSearch(region, searchQueries: [.Arena])
+        sportsStadiumsSearch.localSearch(region, searchQueries: [.Stadium, .Arena])
         
     }
     
@@ -195,12 +199,14 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     
     @IBAction func showOrHideToolbarAndNavBar(sender: AnyObject) {
 
-        if toolbar.hidden == false {
-            toolbar.hidden = true
-            self.navigationController?.navigationBarHidden = true
-        } else {
-            toolbar.hidden = false
-            self.navigationController?.navigationBarHidden = false
+        if annotationInSelectedState == false {
+            if toolbar.hidden == false {
+                toolbar.hidden = true
+                self.navigationController?.navigationBarHidden = true
+            } else {
+                toolbar.hidden = false
+                self.navigationController?.navigationBarHidden = false
+            }
         }
         
     }
@@ -214,9 +220,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
             } else {
                 button.hidden = false
             }
-            
         }
-        
     }
     
     
