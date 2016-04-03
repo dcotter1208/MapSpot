@@ -57,25 +57,14 @@ class LocalSearchAPI {
                     for item:MKMapItem in mapItems {
                         
                         let venue = Venue()
-
-                        if let venueName = item.name {
+                        
+                        if let venueName = item.name, venuePhoneNumber = item.phoneNumber, venueAddress = item.placemark.title, coordinates = item.placemark.location, venueWebsite = item.url {
+                        
                             venue.name = venueName
-                        }
-                        
-                        if let venuePhoneNumber = item.phoneNumber {
                             venue.phoneNumber = venuePhoneNumber
-                        }
-                        
-                        if let venueAddress = item.placemark.title {
                             venue.address = venueAddress
-                        }
-                        
-                        if let coordinates = item.placemark.location {
                             venue.lat = coordinates.coordinate.latitude
                             venue.long = coordinates.coordinate.longitude
-                        }
-                        
-                        if let venueWebsite = item.url {
                             venue.website = venueWebsite
                         }
                         
@@ -88,9 +77,7 @@ class LocalSearchAPI {
                     }
                 }
             }
-
         }
-
     }
     
     func createAnnotation(map:MKMapView) {

@@ -17,6 +17,10 @@ class LoginVC: UIViewController {
         super.viewDidLoad()
 
     }
+    
+    override func viewWillAppear(animated: Bool) {
+
+    }
 
     override func viewDidAppear(animated: Bool) {
         if NSUserDefaults.standardUserDefaults().valueForKey("uid") != nil && CURRENT_USER.authData != nil {

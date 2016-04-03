@@ -86,19 +86,15 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     }
     
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
-        if view.annotation == nil {
-            annotationInSelectedState = false
-        } else {
-            annotationInSelectedState = true
+
             selectedAnnotation = view.annotation as? LocationAnnotation
-            print(selectedAnnotation?.venue.name)
-        }
 
         
     }
     
     func mapView(mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView) {
-        annotationInSelectedState = false
+        
+
     }
 
     override func viewDidLayoutSubviews() {
@@ -204,15 +200,16 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     
     @IBAction func showOrHideToolbarAndNavBar(sender: AnyObject) {
 
-        if annotationInSelectedState == false {
             if toolbar.hidden == false {
                 toolbar.hidden = true
                 self.navigationController?.navigationBarHidden = true
             } else {
                 toolbar.hidden = false
                 self.navigationController?.navigationBarHidden = false
-            }
         }
+        
+
+
         
     }
     
